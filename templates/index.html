@@ -21,20 +21,23 @@
   <div>
   </div>
   <style>
+  .welcome-section {
+    background: url('{{ url_for('static', filename='assets/img/teste.png') }}') center center / cover no-repeat;
+    height: 40vh; /* altura relativa à tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
     .welcome-section {
-      background: url('{{ url_for('static', filename='assets/img/teste.png') }}') center center / cover no-repeat;
-      height: 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
+      height: 25vh; /* menor altura em telas pequenas */
     }
-    .welcome-section img {
-      max-height: 100px;
-      margin-bottom: 20px;
-    }
-  </style>
+  }
+</style>
+
 </head>
 
 <body>
@@ -43,6 +46,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">Sistema Confidence</span>
+          <span class="d-block d-md-none">Confidence</span>  <!-- versão curta no celular -->
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
