@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Ajuda e Suporte</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Início</a></li>
+        <li class="breadcrumb-item active">Ajuda</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Como usar a plataforma</h5>
+        <ul>
+          <li>Para fazer uma denúncia, clique em <strong>Fazer Denúncia</strong>.</li>
+          <li>Para enviar uma reclamação, clique em <strong>Reclamação</strong>.</li>
+          <li>Para acompanhar o estado da sua submissão, vá até <strong>Acompanhamento</strong>.</li>
+        </ul>
+
+        <hr>
+
+        <h5 class="card-title">FAQ - Perguntas Frequentes</h5>
+        <p><strong>1. Posso enviar uma denúncia de forma anônima?</strong><br>Sim, sua identidade será protegida.</p>
+        <p><strong>2. Posso anexar documentos?</strong><br>Sim, são aceitos arquivos como imagens, PDF, vídeos, entre outros.</p>
+
+        <hr>
+
+        <h5 class="card-title">Manual do Usuário</h5>
+        <a href="" class="btn btn-outline-primary" target="_blank">
+          <i class="bi bi-file-earmark-pdf"></i> Baixar Manual em PDF
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+{% endblock %}

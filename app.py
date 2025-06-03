@@ -18,5 +18,10 @@ def reclamacao():
 def acompanhamento():
     return render_template('acompanhamento.html')
 
+@app.route("/ajuda")
+def ajuda():
+    return render_template('ajuda.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
