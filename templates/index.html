@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  {% block title %}{% endblock %}
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Sistema Confidence</title>
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+  <div>
+  </div>
+  <style>
+    .welcome-section {
+      background: url('{{ url_for('static', filename='assets/img/teste.png') }}') center center / cover no-repeat;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+    .welcome-section img {
+      max-height: 100px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">Sistema Confidence</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed"  href="{{ url_for('denuncia') }}">
+          <i class="bi bi-exclamation-octagon"></i>
+          <span>Fazer Denúncia</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url_for('reclamacao') }}">
+          <i class="bi bi-megaphone"></i>
+          <span>Reclamações</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url_for('acompanhamento') }}">
+          <i class="bi bi-eye"></i>
+          <span>Acompanhamento</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  {% block content %}
+  <!-- Main -->
+  <main id="main" class="main">
+    <section class="welcome-section">
+      <div>
+      </div>
+      <div>
+       
+      </div>
+    </section>
+    {% block dashboard_content %}{% endblock %}
+  </main>
+  {% endblock %}
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="container text-center">
+      <p>© 2025 Sistema Confidence. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+</body>
+</html>

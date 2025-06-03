@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Reclamação</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Início</a></li>
+        <li class="breadcrumb-item active">Reclamação</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Envie sua Reclamação, Sugestão ou Comentário</h5>
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ messages[0] }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <!-- Formulário -->
+            <form method="POST" action="" enctype="multipart/form-data">
+              
+              <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="identificar" name="identificar">
+                    <label class="form-check-label" for="identificar">
+                      Deseja se identificar?
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Campos de identificação (visíveis somente se checkbox estiver marcado) -->
+              <div id="identificacaoCampos" style="display: none;">
+                <div class="row mb-3">
+                  <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="email" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Seu e-mail">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Seu telefone">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="assunto" class="col-sm-2 col-form-label">Título</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="assunto" name="assunto" placeholder="Título da reclamação" required>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="mensagem" class="col-sm-2 col-form-label">Descrição</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" id="mensagem" name="mensagem" rows="4" placeholder="Descreva aqui sua reclamação, sugestão ou comentário" required></textarea>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="anexo" class="col-sm-2 col-form-label">Anexo</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" id="anexo" name="anexo">
+                  <small class="text-muted">Arquivos permitidos: .jpg, .png, .pdf, .mp4, etc.</small>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+                <div class="col-sm-6 text-end">
+                  <button type="submit" class="btn btn-primary">Enviar Reclamação</button>
+                </div>
+              </div>
+            </form><!-- End Form -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+<!-- Script para mostrar/ocultar campos -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkbox = document.getElementById("identificar");
+    const campos = document.getElementById("identificacaoCampos");
+
+    checkbox.addEventListener("change", function () {
+      campos.style.display = this.checked ? "block" : "none";
+    });
+  });
+</script>
+{% endblock %}

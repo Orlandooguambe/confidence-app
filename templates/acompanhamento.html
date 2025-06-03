@@ -1,0 +1,70 @@
+{% extends "index.html" %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Acompanhar Reclamação/Denúncia</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Início</a></li>
+        <li class="breadcrumb-item active">Acompanhamento</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Digite o Código para Acompanhar</h5>
+
+            <!-- Flash message -->
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  {{ messages[0] }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <!-- Código Form -->
+            <form method="POST" action="">
+              <div class="row mb-3">
+                <label for="codigo" class="col-sm-3 col-form-label">Código de Acompanhamento</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Insira o código recebido" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12 text-end">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+              </div>
+            </form><!-- End Form -->
+
+            {% if resultado %}
+            <hr>
+            <h5 class="card-title">Detalhes da Reclamação/Denúncia</h5>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Assunto:</strong> {{ resultado.assunto }}</li>
+              <li class="list-group-item"><strong>Mensagem:</strong> {{ resultado.mensagem }}</li>
+              <li class="list-group-item"><strong>Status:</strong> {{ resultado.status }}</li>
+              <li class="list-group-item"><strong>Data de Envio:</strong> {{ resultado.data_envio.strftime('%d/%m/%Y') }}</li>
+              {% if resultado.resposta %}
+                <li class="list-group-item"><strong>Resposta:</strong> {{ resultado.resposta }}</li>
+              {% endif %}
+            </ul>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "index.html" %} 
+{% block title %}{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Denúncia</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Início</a></li>
+        <li class="breadcrumb-item active">Denúncia</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Formulário de Denúncia</h5>
+
+            <!-- Mensagens Flash -->
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ messages[0] }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <!-- Formulário -->
+            <form method="POST" action="" enctype="multipart/form-data">
+              <div class="row mb-3">
+                <label for="titulo" class="col-sm-2 col-form-label">Título</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título da denúncia" required>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" id="descricao" name="descricao" rows="4" placeholder="Descreva o ocorrido..." required></textarea>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="data_ocorrido" class="col-sm-2 col-form-label">Data</label>
+                <div class="col-sm-4">
+                  <input type="date" class="form-control" id="data_ocorrido" name="data_ocorrido" value="{{ current_date }}" required>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="evidencia" class="col-sm-2 col-form-label">Anexos</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" id="evidencia" name="evidencia" accept=".jpg,.jpeg,.png,.pdf,.mp4,.avi,.docx,.xlsx">
+                  <small class="text-muted">Formatos suportados: .jpg, .png, .pdf, .mp4, etc.</small>
+                </div>
+              </div>
+
+              
+
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+                <div class="col-sm-6 text-end">
+                  <button type="submit" class="btn btn-primary">Enviar Denúncia</button>
+                </div>
+              </div>
+            </form><!-- End Form -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+{% endblock %}
