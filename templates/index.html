@@ -14,10 +14,8 @@
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+  <!-- Material CSS -->
+  <link href="{{ url_for('static', filename='materialize/css/materialize.min.css') }}" rel="stylesheet">
   <div>
   </div>
   <style>
@@ -42,49 +40,22 @@
 
 <body>
   <!-- Header -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
-        <span class="d-none d-lg-block">Sistema Confidencia</span>
-          <span class="d-block d-md-none">Sistema Confidencia</span>  <!-- versão curta no celular -->
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
-  </header>
+  <nav class="top-nav">
+    <a href="{{ url_for('index') }}" class="brand-logo">Sistema Confidencia</a>
+    <span class="sidenav-trigger" onclick="toggleNav()">&#9776;</span>
+  </nav>
 
   <!-- Sidebar -->
-  <aside id="sidebar" class="sidebar">
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item">
-        <a class="nav-link collapsed"  href="{{ url_for('denuncia') }}">
-          <i class="bi bi-exclamation-octagon"></i>
-          <span>Fazer Denúncia</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('reclamacao') }}">
-          <i class="bi bi-megaphone"></i>
-          <span>Reclamações</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('acompanhamento') }}">
-          <i class="bi bi-eye"></i>
-          <span>Acompanhamento</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('ajuda') }}">
-         <i class="bi bi-question-circle"></i><span>Ajuda</span>
-        </a>
-      </li>
-
-    </ul>
-  </aside>
+  <ul id="sidenav" class="sidenav">
+    <li><a href="{{ url_for('denuncia') }}">Fazer Denúncia</a></li>
+    <li><a href="{{ url_for('reclamacao') }}">Reclamações</a></li>
+    <li><a href="{{ url_for('acompanhamento') }}">Acompanhamento</a></li>
+    <li><a href="{{ url_for('ajuda') }}">Ajuda</a></li>
+  </ul>
 
   {% block content %}
   <!-- Main -->
-  <main id="main" class="main">
+  <div class="main-content">
     <section class="welcome-section">
       <div>
       </div>
@@ -93,7 +64,7 @@
       </div>
     </section>
     {% block dashboard_content %}{% endblock %}
-  </main>
+  </div>
   {% endblock %}
 
   <!-- Footer -->
@@ -104,8 +75,7 @@
   </footer>
 
   <!-- Vendor JS Files -->
-  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='materialize/js/materialize.min.js') }}"></script>
 
 </body>
 </html>

@@ -1,0 +1,18 @@
+/* Minimal Material-style CSS */
+body{font-family:'Roboto',sans-serif;margin:0;background:#f9f9f9;color:#333}
+nav.top-nav{background:#6200ee;color:#fff;padding:0 1rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+nav.top-nav a.brand-logo{color:#fff;font-size:1.3rem;text-decoration:none}
+nav.top-nav .sidenav-trigger{color:#fff;font-size:2rem;cursor:pointer;display:none}
+.sidenav{position:fixed;top:64px;left:0;bottom:0;width:220px;background:#fff;box-shadow:2px 0 5px rgba(0,0,0,0.1);padding-top:1rem;overflow-y:auto}
+.sidenav li{list-style:none}
+.sidenav li a{display:block;padding:0.75rem 1rem;color:#333;text-decoration:none}
+.sidenav li a:hover{background:#eee}
+.main-content{margin-left:220px;padding:2rem}
+.card{background:#fff;border-radius:4px;box-shadow:0 2px 5px rgba(0,0,0,0.1);padding:1rem;margin-bottom:1rem}
+.btn{background:#6200ee;color:#fff;border:none;border-radius:4px;padding:0.5rem 1rem;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-flat{background:transparent;color:#6200ee;border:none}
+.field{margin-bottom:1rem}
+.field label{display:block;margin-bottom:0.3rem;font-weight:500}
+.field input,.field textarea{width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px;background:#fff}
+@media(max-width:600px){.sidenav{transform:translateX(-100%);transition:transform .3s}.sidenav.open{transform:translateX(0)}.sidenav-trigger{display:block}.main-content{margin-left:0}}
+.page-footer{background:#f5f5f5;padding:1rem;text-align:center}
